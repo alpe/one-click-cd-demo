@@ -1,3 +1,5 @@
 #!/bin/bash
-cd ~/one-click-cd-demo/static
+BASEDIR=$(dirname $0)
+
+cd $BASEDIR/../static
 python -m SimpleHTTPServer
