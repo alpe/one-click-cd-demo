@@ -1,7 +1,10 @@
-var application = require("../application.js");
+var requirejs = require('requirejs');
 
-describe("one-click CD demo", function() {
-    it("says hello", function() {
-        expect(application.hello_world()).toEqual("Hello world!");
-    });
-});
+requirejs(['static/application.js'],
+		function (app) {
+			describe("one-click CD demo", function() {
+				it("says hello", function() {
+					expect(app.hello_world()).toEqual("Hello world!");
+				});
+			});
+		});

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>One-click CD demo</title>
+</head>
+
+<body>
+	<script src="lib/require.js"></script>
+	<script src="lib/jquery-1.7.2.js"></script>
+	<script>
+		requirejs(['application.js'], function(app){
+			$(document).ready(function(){
+				$("#site").text(app.hello_world());
+			});
+		});
+
+	</script>
+
+	<h1>One-click CD demo</h1>
+	<div id="site">
+	</div>
+</body>
+
+</html>
