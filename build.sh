@@ -5,7 +5,7 @@ echo "BUILD: cleaning"
 rm -rf dist
 
 echo "BUILD: running tests"
-jasmine-node spec
+node_modules/jasmine-node/bin/jasmine-node spec
 
 echo "BUILD: packaging"
 mkdir dist
