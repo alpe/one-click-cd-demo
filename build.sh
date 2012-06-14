@@ -13,7 +13,7 @@ cp -r server-scripts static dist/
 cd dist
 
 build_number="built on `hostname`"
-[ -z $GO_PIPELINE_COUNTER ] || build_number="go:$GO_PIPELINE_COUNTER"
+[ -z $GO_PIPELINE_COUNTER ] || build_number="$GO_PIPELINE_COUNTER"
 git_version=`git log | head -1 | awk '{print $2}'`
 build_info="$build_number - git:$git_version - `date +"%m-%d-%Y @ %T"`"
 echo build info = $build_info
