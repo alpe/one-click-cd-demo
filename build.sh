@@ -12,15 +12,15 @@ mkdir dist
 cp -r server-scripts static dist/
 cd dist
 
-build_number="host:`hostname`"
+build_number="built on `hostname`"
 [ -z $GO_PIPELINE_COUNTER ] || build_number="go:$GO_PIPELINE_COUNTER"
 git_version=`git log | head -1 | awk '{print $2}'`
-build_number="$build_number - git:$git_version - `date +"%m-%d-%Y @ %T"`"
-echo build number = $build_number
+build_info="$build_number - git:$git_version - `date +"%m-%d-%Y @ %T"`"
+echo build info = $build_info
 
-sed -i -e "s/\${BUILD_NUMBER}/$build_number/g" static/*html
+sed -i -e "s/\${BUILD_INFO}/$build_info/g" static/*html
 
-tar cfz one-click-cd-demo.tgz *
+tar cfz $(echo "one-click-cd-demo_$build_number.tgz" | sed 's/ /-/g' | sed 's/://g') *
 
 echo "BUILD: done"
 exit 0
