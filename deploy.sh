@@ -3,8 +3,7 @@ set -e
 
 key=$1
 slice=$2
-
-tarfile="one-click-cd-demo.tgz"
+tarfile=$3
 
 (./stop.sh $key $slice || echo 'Could not stop server')
 
