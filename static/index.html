@@ -18,15 +18,47 @@
 
 	</script>
 
-    <h1>One-click Continuous Delivery Demo</h1>
-    <h2>ThoughtWorks Deutschland GmbH</h2>
-    <p>
-        Hello Christian!
-    </p>
-    <p>&copy;2012</p>
+	<div id="banner">
+		<div><img src="/images/thoughtworks-logo.png"></div>
+		<h1>One-click Continuous Delivery Demo</h1>
+	</div>
+	<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+	<script>
+		new TWTR.Widget({
+			version: 2,
+			type: 'search',
+			search: '#thoughtworks',
+			interval: 30000,
+			title: 'ThoughtWorks',
+			subject: 'CD Demo',
+			width: 'auto',
+			height: 'auto',
+			theme: {
+					shell: {
+						background: '#e6da33',
+						color: '#000000'
+					},
+					tweets: {
+						background: '#ffffff',
+						color: '#444444',
+						links: '#1786b5'
+					}
+				},
+			features: {
+				scrollbar: false,
+				loop: true,
+				live: true,
+				behavior: 'default'
+			}
+		}).render().start();
+	</script>
+
 	<div id="site">
 	</div>
-	<div id="footer">${BUILD_INFO}</div>
+	<div id="footer">
+		<p>${BUILD_INFO}</p>
+		<p>&copy; 2012</p>
+	</div>
 </body>
 
 </html>

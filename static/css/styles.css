@@ -1,7 +1,8 @@
 html, button, input, select, textarea { font-family: Ubuntu;}
 body {padding:1em;}
-h1 {border-bottom:1px solid #ddd;}
 table td {padding:0.5em 1em;}
 table tr {border-bottom:1px solid #ccc}
 table thead {background-color:#ccc;}
 #footer {font-size:80%; color:#888; margin-top:2em;}
+#banner {text-align:center;}
+#banner h1 {background:url(/images/header-large-left-green.png) no-repeat scroll left top,url(/images/header-large-right-pink.png) no-repeat scroll right bottom transparent;display:inline-block;padding:15px 23px 16px 23px;letter-spacing:-3px;}
