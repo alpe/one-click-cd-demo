@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+BUILD_NUMBER_ARG=$1
+echo "BUILD: build_number passed in $BUILD_NUMBER_ARG"
+
 echo "BUILD: cleaning"
 rm -rf dist
 
@@ -13,7 +16,7 @@ cp -r server-scripts static dist/
 cd dist
 
 build_number="built on `hostname`"
-[ -z $GO_PIPELINE_COUNTER ] || build_number="go:$GO_PIPELINE_COUNTER"
+[ -z $BUILD_NUMBER_ARG ] || build_number="$BUILD_NUMBER_ARG"
 git_version=`git log | head -1 | awk '{print $2}'`
 build_info="$build_number - git:$git_version - `date +"%m-%d-%Y @ %T"`"
 echo build info = $build_info
