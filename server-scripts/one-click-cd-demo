@@ -1,0 +1,36 @@
+#!/bin/sh
+# Starts and stops the one-click 
+#
+BASENAME=`basename $0`
+PIDFILE=/var/run/$BASENAME.pid
+
+case "$1" in
+start)
+    start-stop-daemon -b --make-pidfile --pidfile $PIDFILE --start --exec /home/ubuntu/one-click-cd-demo/server-scripts/start-local.py
+;;
+
+stop)
+    start-stop-daemon --pidfile $PIDFILE --name python --stop 
+;;
+
+restart)
+    $0 stop
+    $0 start
+;;
+
+status)
+   if ps -p `cat $PIDFILE` | grep python > /dev/null; then
+       echo "Running"
+       exit 0
+   else
+       echo "Not running"
+       exit 1
+   fi
+;;
+
+*)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+esac
+
+
