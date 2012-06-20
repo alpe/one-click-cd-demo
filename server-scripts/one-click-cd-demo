@@ -1,5 +1,5 @@
 #!/bin/sh
-# Starts and stops the one-click 
+# Starts and stops the one-click
 #
 BASENAME=`basename $0`
 PIDFILE=/var/run/$BASENAME.pid
@@ -10,7 +10,7 @@ start)
 ;;
 
 stop)
-    start-stop-daemon --pidfile $PIDFILE --name python --stop 
+    start-stop-daemon --pidfile $PIDFILE --name python --stop ||  pgrep -f start-local.py | xargs kill
 ;;
 
 restart)
