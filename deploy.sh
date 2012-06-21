@@ -11,10 +11,6 @@ echo "DEPLOY Deploying $3 to $2 using key $1"
 echo "DEPLOY stopping server"
 (./stop.sh $key $slice || echo 'DEPLOY Could not stop server')
 
-echo "DEPLOY making sure it is dead"
-ssh $SSH_OPTS -i "$key" ubuntu@$slice 'sudo "pgrep -f ./start-local.py | xargs kill"'
-
-echo "DEPLOY Install new software"
 ssh $SSH_OPTS -i "$key" ubuntu@$slice 'rm -rf ~/one-click-cd-demo'
 ssh $SSH_OPTS -i "$key" ubuntu@$slice 'mkdir ~/one-click-cd-demo'
 scp $SSH_OPTS -i "$key" dist/$tarfile ubuntu@$slice:~/one-click-cd-demo
