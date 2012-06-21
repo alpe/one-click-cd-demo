@@ -8,9 +8,11 @@ environment=$4
 
 echo "DEPLOY Deploying $3 to $2 using key $1"
 
-echo "DEPLOY stopping server"
+echo "DEPLOY stopping server HELLO"
+
 (./stop.sh $key $slice || echo 'DEPLOY Could not stop server')
 
+echo "DEPLOY Checking for running start-local.py"
 
 # Only bail if there is still a process around
 pid=`pgrep -f start-local.py`
