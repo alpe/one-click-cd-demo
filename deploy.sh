@@ -15,11 +15,14 @@ echo "DEPLOY stopping server HELLO"
 echo "DEPLOY Checking for running start-local.py"
 
 # Only bail if there is still a process around
-pid=`pgrep -f start-local.py`
-if [ -n $pid]
-then
-    echo "DEPLOY ERROR There is still a server process around"
-    exit 1
+set +e
+pid=`ssh $SSH_OPTS -i "$key" ubuntu@$slice pgrep -f start-local.py`
+set -e
+
+echo "pid: $pid"
+if [ -n "$pid" ]
+    then
+    echo "DEPLOY ERROR There is still a server process around"; exit 1
 fi
 
 echo "DEPLOY Starting to copy files"
