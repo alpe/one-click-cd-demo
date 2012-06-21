@@ -16,10 +16,11 @@ echo "DEPLOY stopping server"
 pid=`pgrep -f start-local.py`
 if [ -n $pid]
 then
-    echo DEPLOY ERROR There is still a server process around
+    echo "DEPLOY ERROR There is still a server process around"
     exit 1
 fi
 
+echo "DEPLOY Starting to copy files"
 
 
 ssh $SSH_OPTS -i "$key" ubuntu@$slice 'rm -rf ~/one-click-cd-demo'
