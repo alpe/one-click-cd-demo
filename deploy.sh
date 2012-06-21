@@ -13,7 +13,7 @@ echo "DEPLOY stopping server"
 
 
 # Only bail if there is still a process around
-pid = `pgrep -f start-local.py`
+pid=`pgrep -f start-local.py`
 if [ -z $pid]
 then
     echo DEPLOY ERROR There is still a server process around
