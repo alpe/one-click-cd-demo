@@ -8,8 +8,25 @@ environment=$4
 
 echo "DEPLOY Deploying $3 to $2 using key $1"
 
-echo "DEPLOY stopping server"
+echo "DEPLOY stopping server HELLO"
+
 (./stop.sh $key $slice || echo 'DEPLOY Could not stop server')
+
+echo "DEPLOY Checking for running start-local.py"
+
+# Only bail if there is still a process around
+set +e
+pid=`ssh $SSH_OPTS -i "$key" ubuntu@$slice pgrep -f start-local.py`
+set -e
+
+echo "pid: $pid"
+if [ -n "$pid" ]
+    then
+    echo "DEPLOY ERROR There is still a server process around"; exit 1
+fi
+
+echo "DEPLOY Starting to copy files"
+
 
 ssh $SSH_OPTS -i "$key" ubuntu@$slice 'rm -rf ~/one-click-cd-demo'
 ssh $SSH_OPTS -i "$key" ubuntu@$slice 'mkdir ~/one-click-cd-demo'
